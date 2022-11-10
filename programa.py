@@ -2,8 +2,6 @@ print("____________________________________________")
 print("|OPERACIONES ARITMETICAS CON DOS FRACCIONES|")
 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
-
-
 class Fraccion():
     def __init__(self, numerador, denominador):
         self.numerador = numerador
@@ -14,30 +12,30 @@ class Fraccion():
     def __str__(self):
         return str(self.numerador) + "/" + str(self.denominador)
 
-    def maximo_comun_divisor(self, a, b):
-        temporal = 0
-        while b != 0:
-            temporal = b
-            b = a % b
-            a = temporal
-        return a
+    def maximo_comun_divisor(self, n, m):
+        variable = 0
+        while m != 0:
+            variable = m
+            m = n % m
+            n = variable
+        return n
 
     def suma(self, otra):
         mcd = self.maximo_comun_divisor(self.denominador, otra.denominador)
-        diferencia_self = mcd/self.denominador
-        diferencia_otra = mcd/otra.denominador
-        numerador_resultado = (diferencia_self*self.numerador) + (diferencia_otra*otra.numerador)
+        d_self = mcd/self.denominador
+        d_otra = mcd/otra.denominador
+        numerador_resultado = (d_self*self.numerador) + (d_otra*otra.numerador)
         return Fraccion(numerador_resultado, mcd)
     def resta(self, otra):
         mcd = self.maximo_comun_divisor(self.denominador, otra.denominador)
-        diferencia_self = mcd/self.denominador
-        diferencia_otra = mcd/otra.denominador
-        numerador_resultado = (diferencia_self*self.numerador) - (diferencia_otra*otra.numerador)
+        d_self = mcd/self.denominador
+        d_otra = mcd/otra.denominador
+        numerador_resultado = (d_self*self.numerador) - (d_otra*otra.numerador)
         return Fraccion(numerador_resultado, mcd)
     def multiplicar(self,otra):
-      return Fraccion(self.numerador*otra.numerador,self.denominador*otra.denominador)
+        return Fraccion(self.numerador*otra.numerador,self.denominador*otra.denominador)
     def dividir(self,otra):
-      return Fraccion(self.numerador*otra.denominador,self.denominador*otra.numerador)
+        return Fraccion(self.numerador*otra.denominador,self.denominador*otra.numerador)
 print("\n")
 print("SELECCIONE QUE OPERACION DESEA REALIZAR")
 print("|(1)|SUMAR||(2)|RESTAR||(3)|MULTIPLICAR||(4)|DIVIDIR|")
@@ -83,4 +81,5 @@ elif(z==4):
   f = Fraccion(numerador,denominador)
   f2 = Fraccion(numerador2, denominador2)
   print(f"{f} / {f2} = {f.dividir(f2)}")
+
 
